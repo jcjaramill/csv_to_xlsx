@@ -36,14 +36,14 @@ def upload_file():
     file.save(filepath)
 
     try:
-        df = pd.read_csv(filepath)
+        # Intentar leer el archivo con codificación por defecto
+        df = pd.read_csv(filepath, skiprows=1, sep=";", quotechar='"')
     except UnicodeDecodeError:
         # Si falla, probar con utf-16-le
-        df = pd.read_csv(filepath, encoding="utf-16-le", sep=";", quotechar='"')
+        df = pd.read_csv(filepath, encoding="utf-16-le", sep=";", quotechar='"', skiprows=1)
 
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    if len(df.columns) >= 5:
+        df.columns.values[4] = ''
 
     # Reemplazar valores
     df = df.replace({True: "R", False: "T", "true": "R", "false": "T"})
