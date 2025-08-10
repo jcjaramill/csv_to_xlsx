@@ -39,7 +39,7 @@
             formData.append("file", fileInput.files[0]);
 
             try {
-                const response = await fetch("https://5000-jcjaramill-csvtoxlsx-i8v5spr89r7.ws-us118.gitpod.io/upload", {
+                const response = await fetch("https://80-jcjaramill-csvtoxlsx-ai90oqc3gge.ws-us120.gitpod.io/upload", {
                     method: "POST",
                     body: formData
                 });
@@ -51,7 +51,7 @@
                         <p class="text-green-600">${result.message}</p>
                         <p><strong>Columnas:</strong> ${result.columns.join(", ")}</p>
                         <p><strong>Filas:</strong> ${result.rows}</p>
-                        <a href="https://5000-jcjaramill-csvtoxlsx-i8v5spr89r7.ws-us118.gitpod.io/${result.download_link}" 
+                        <a href="https://80-jcjaramill-csvtoxlsx-ai90oqc3gge.ws-us120.gitpod.io/${result.download_link}" 
                            class="mt-2 inline-block bg-green-500 text-white py-1 px-3 rounded hover:bg-green-600">
                             📥 Descargar Excel
                         </a>

@@ -39,7 +39,7 @@ def upload_file():
         df = pd.read_csv(filepath)
     except UnicodeDecodeError:
         # Si falla, probar con utf-16-le
-        df = pd.read_csv(filepath, encoding="utf-16-le")
+        df = pd.read_csv(filepath, encoding="utf-16-le", sep=";", quotechar='"')
 
 
     except Exception as e:
